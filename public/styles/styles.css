@@ -1,0 +1,14 @@
+*{
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
+
+#selectorWrapper{
+  display: flex;
+}

@@ -1,0 +1,45 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./js/bundle.js"></script>
+  <link rel="stylesheet" type="text/css" media="screen" href="./styles/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+
+    <div id="fetching" v-if="!currencies">
+      Updating currencies......
+    </div>
+    <div id="fetched" v-if="currencies">
+      <h1>Currency Converter</h1>
+
+
+      <div id="selectorWrapper">
+        <!-- get the amount to convert -->
+        <input type="number" class="inputBox" v-model="cash">
+        <!-- get the from currency -->
+        <div class="fromCurrencyWrapper">
+          <label for="fromCurrency">From</label>
+          <select name="fromCurrency" id="fromCurrency" v-model="fromCurrency">
+            <option v-for="(r, c) in rates" :value="c" selected="c=='EUR'">{{c}}</option>
+          </select>
+        </div>
+        <!-- get the convert to currency -->
+        <div class="toCurrencyWrapper">
+          <label for="toCurrency">To</label>
+          <select name="toCurrency" id="toCurrency" v-model="toCurrency">
+            <option v-for="(r, c) in rates" :value="c" selected="c=='EUR'">{{c}}</option>
+          </select>
+        </div>
+
+      </div>
+      <!-- display the answer -->
+      <p v-if="cash>0"> Changing {{ cash }} from {{ fromCurrency }} to {{ toCurrency }} equals {{ converted }}</p>
+    </div>
+  </div>
+</body>
+</html>
